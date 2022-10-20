@@ -38,7 +38,7 @@ Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
 Explanation: Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.
 It does not matter what you leave beyond the returned k (hence they are underscores).
 '''
-
+'''
 class Solution:
     def removeDuplicates(self, nums: int) -> int:
         unique = list()
@@ -50,6 +50,27 @@ class Solution:
                     unique.append(nums[iNum])
 
         return len(nums)
+        '''
+
+class Solution(object):
+    def removeDuplicates(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if len(nums) == 0:
+            return 0
+        length = 1
+        previous = nums[0]
+        index = 1
+        for i in range(1,len(nums)):
+            if nums[i] != previous:
+                length += 1
+                previous = nums[i]
+                nums[index] = nums[i]
+                index+=1
+        print(nums)
+        return length
 
 # Test Cases
 s = Solution()
@@ -57,7 +78,9 @@ nums = [1,1,2]
 out = s.removeDuplicates(nums)
 print(out)
 
+'''
 s = Solution()
 nums = [0,0,1,1,1,2,2,3,3,4]
 out = s.removeDuplicates(nums)
 print(out)
+'''

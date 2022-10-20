@@ -52,17 +52,25 @@ Constraints:
 
 class Solution:
     def removeElement(self, nums: int, val: int) -> int:
-        return 0
+        # Counter for keeping track of elements other than val
+        count = 0
+        # Loop through all the elements of the array
+        for i in range(len(nums)):
+            if nums[i] != val:
+                # If the element is not val
+                nums[count] = nums[i]
+                count += 1
+        return count
 
 # Test Cases
 s = Solution()
 nums = [3,2,2,3]
 val = 3
-out = removeElement(nums, val)
+out = s.removeElement(nums, val)
 print(out)
 
 s = Solution()
 nums = [0,1,2,2,3,0,4,2]
 val = 2
-out = removeElement(nums, val)
+out = s.removeElement(nums, val)
 print(out)
